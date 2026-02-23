@@ -2,38 +2,64 @@ package tad;
 
 public class LinkedList<Generic> {
     private Node<Generic> root;
-    private Node<Generic> leaf;
     private int size;
     public LinkedList(){}
 
     public void push(Generic element) throws Exception {
-        Node<Generic> node = new Node<Generic>(element, null);
+        Node<Generic> node = new Node<Generic>(element);
         if (size == 0) {
             root = node;
-            leaf = node;
+            root.setBoth(node);
             size++;
             return;
         }
-        leaf.setNext(node);
-        leaf = node;
+        node.setPrevNext(root.getPrevious(), root);
+        root.getPrevious().setNext(node);
+        root.setPrevious(node);
         size++;
         return;
     }
     public Generic get(int index) throws Exception {
         Node<Generic> node = root;
-
-        if (index > size) 
-            throw new Exception("Invalid index acess");
+        if (index >= size) 
+            throw new Exception("Invalid index access");
 
         for (int i = 0; i < index; i++) 
             node = node.getNext();
         
         return node.getElement();
     }
-    public Generic getLast(){
-        return leaf.getElement();
+
+    public void removeLast() throws Exception {
+        switch (size) {
+            case 0:
+                throw new Exception("Stack Underflow; Stack Empty");
+            case 1:
+                root = null;
+
+                break;
+
+            default:
+                Node<Generic> aux = root.getPrevious().getPrevious();
+                aux.setNext(root);
+                //aux.setNext(null);
+                root.setPrevious(aux);
+                //System.out.println(root);
+                break;
+        }
+        size--;
     }
+
+    public Generic getLast() throws Exception {
+        if (size == 0) 
+            throw new Exception("Stack is Empty");
+        return root.getPrevious().getElement();
+    }
+
     public int getSize() {
         return size;
+    }
+    public boolean isEmpty(){
+        return size == 0;
     }
 }

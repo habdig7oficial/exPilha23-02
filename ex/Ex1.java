@@ -9,10 +9,13 @@ public class Ex1 {
         try {
             par.push(22);
             par.push(24);
+            par.push(26);
+            System.err.println(par.peak());
+            par.pop();
             System.err.println(par.peak());
             
         } catch (Exception e) {
-            // TODO: handle exception
+            System.out.println(e.getMessage());
         }
 
     }
