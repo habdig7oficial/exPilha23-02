@@ -26,6 +26,7 @@ public class Ex4 {
         return stack.isEmpty();
     }
    public static void main(String[] args) {
+    /* This common lisp code actually works and I would prefer to write in Lisp than Java :) */
     String code = """
     (loop for i from 0 to 10 do 
     	(print 
