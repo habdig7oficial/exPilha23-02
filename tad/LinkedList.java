@@ -5,7 +5,7 @@ public class LinkedList<Generic> {
     private int size;
     public LinkedList(){}
 
-    public void push(Generic element) throws Exception {
+    public void push(Generic element) {
         Node<Generic> node = new Node<Generic>(element);
         if (size == 0) {
             root = node;

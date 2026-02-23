@@ -4,7 +4,7 @@ public class Stack<Generic> {
     LinkedList<Generic> list = new LinkedList<Generic>();
     public Stack(){}
 
-    public void push(Generic element) throws Exception {
+    public void push(Generic element){
         list.push(element);
     }
 
