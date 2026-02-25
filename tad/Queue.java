@@ -1,8 +1,8 @@
 package tad;
 
-public class Stack<Generic> {
+public class Queue<Generic> {
     LinkedList<Generic> list = new LinkedList<Generic>();
-    public Stack(){}
+    public Queue(){}
 
     public void push(Generic element){
         list.push(element);
@@ -10,12 +10,12 @@ public class Stack<Generic> {
 
     public Generic pop() throws Exception {
         Generic e = this.peak();
-        list.removeLast();
+        list.removeFirst();
         return e;
     }
 
     public Generic peak() throws Exception {
-        return list.getLast();
+        return list.get(0);
     }
 
     public boolean isEmpty(){
@@ -25,4 +25,10 @@ public class Stack<Generic> {
     public int length(){
         return list.length();
     }
+
+    @Override
+    public String toString() {
+        return list.toString();
+    } 
+
 }

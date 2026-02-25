@@ -8,4 +8,4 @@ exs:
 
 # program="./ex/Ex1.java"
 run: lib exs
-	java $(program)
+	java -cp ./classes $(program)

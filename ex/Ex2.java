@@ -12,7 +12,7 @@ public class Ex2 {
         StringBuilder copy = new StringBuilder(str);
 
 
-        while (!copy.isEmpty()) {
+        while (copy.length() != 0) {
             stack.push(copy.charAt(0));
             copy.deleteCharAt(0);
         }

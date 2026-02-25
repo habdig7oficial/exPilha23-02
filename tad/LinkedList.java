@@ -50,16 +50,60 @@ public class LinkedList<Generic> {
         size--;
     }
 
+    public void removeFirst() throws Exception {
+        switch (size) {
+            case 0:
+                throw new Exception("Stack Underflow; Stack Empty");
+            case 1:
+                root = null;
+
+                break;
+
+            default:
+                Node<Generic> aux = root.getNext();
+                aux.setPrevious(root.getPrevious());
+                //aux.setNext(null);
+                root.getPrevious().setNext(aux);
+                root = aux;
+                break;
+        }
+        size--;
+    }
+
+
     public Generic getLast() throws Exception {
         if (size == 0) 
             throw new Exception("Stack is Empty");
         return root.getPrevious().getElement();
     }
 
+    public Generic getFirst() throws Exception {
+        if (size == 0) 
+            throw new Exception("Stack is Empty");
+        return root.getElement();
+    }
+
+
     public int getSize() {
         return size;
     }
     public boolean isEmpty(){
         return size == 0;
+    }
+    public int length(){
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        String str = "[";
+
+        Node<Generic> node = root;
+        for (int i = 0; i < size; i++) {
+            str += node.getElement().toString() + ", ";
+            node = node.getNext();
+        }
+
+        return str + "]";
     }
 }
