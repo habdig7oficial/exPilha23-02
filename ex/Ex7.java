@@ -9,15 +9,18 @@ public class Ex7 {
         Queue<String> clients = new Queue<String>();
 
         String name = "";
-        do {
+        while (true){
+            System.out.printf(">> ");
             name = scanner.nextLine();
-            clients.push(name);
-        } while (!name.toLowerCase().equals("fim"));
-
+            if (name.toLowerCase().equals("end"))
+                break;
+            else 
+                clients.push(name);
+        } 
 
         try {
             while (!clients.isEmpty()) 
-                System.out.printf("Atendendo CLiente: %s", clients.pop());
+                System.out.printf("Atendendo CLiente: %s\n", clients.pop());
         } catch (Exception e) {
             // TODO: handle exception
         }
